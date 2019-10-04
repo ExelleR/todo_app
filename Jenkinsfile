@@ -1,7 +1,7 @@
 node {
-    
     def newApp
-    def registry = 'exeller/hello'
+    def registry = 'https://registry-1.docker.io/v2/'
+	def imagename = "exeller/hello"
     def registryCredential = 'dockerhub'
 	
 	stage('Git') {
@@ -14,10 +14,10 @@ node {
 		sh 'npm test'
 	}
 	stage('Building image') {
-        docker.withRegistry( 'https://' + registry, registryCredential ) {
-		    def buildName = registry + ":$BUILD_NUMBER"
-			newApp = docker.build buildName
-			newApp.push()
+        docker.withRegistry( registry, registryCredential ) {
+		    def buildName = imagename + ":$BUILD_NUMBER"
+			newApp = docker.build(buildName)
+			newApp.push();
         }
 	}
 }
