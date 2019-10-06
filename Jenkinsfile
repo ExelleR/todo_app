@@ -15,7 +15,7 @@ node {
 	}
 	stage('Building image') {
         docker.withRegistry( registry, registryCredential ) {
-		    def buildName = imagename + ":$BUILD_NUMBER"
+		    def buildName = imagename + ":'$BRANCH_NAME'_'$BUILD_NUMBER'"
 			newApp = docker.build(buildName)
 			newApp.push();
         }
