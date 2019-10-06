@@ -18,6 +18,7 @@ node {
 		    def buildName = imagename + ":$BUILD_NUMBER"
 			newApp = docker.build(buildName)
 			newApp.push();
+			
         }
 	}
 }
