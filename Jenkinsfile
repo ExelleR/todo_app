@@ -18,7 +18,7 @@ node {
 		    def buildName = imagename + ":'$BRANCH_NAME'_'$BUILD_NUMBER'"
 			newApp = docker.build(buildName)
 			newApp.push();
-			
+			newApp.push('latest')
         }
 	}
 }
