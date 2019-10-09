@@ -35,6 +35,6 @@ node {
             manifestPattern: 'manifest.yaml',
             credentialsId: env.CREDENTIALS_ID,
             verifyDeployments: true])
-    
     }
+			
 }
