@@ -31,7 +31,7 @@ pipeline {
 		}
 		stage('Building image') {
 			steps {
-				step { 
+				script {
 					docker.withRegistry( 'https://registry-1.docker.io/v2/', 'dockerhub' ) {
 						def buildName = "exeller/hello" + ":'$BRANCH_NAME'_'$BUILD_NUMBER'"
 						def newApp = docker.build(buildName)
