@@ -1,10 +1,5 @@
 pipeline {
-	script{
-    def newApp
-    def registry = 'https://registry-1.docker.io/v2/'
-	def imagename = "exeller/hello"
-    def registryCredential = 'dockerhub'
-	}
+	
 	agent any
 	environment {
         PROJECT_ID = 'studies-252508'
@@ -28,9 +23,9 @@ pipeline {
 		}
 		stage('Building image') {
 			steps {
-				docker.withRegistry( registry, registryCredential ) {
-					def buildName = imagename + ":'$BRANCH_NAME'_'$BUILD_NUMBER'"
-					newApp = docker.build(buildName)
+				docker.withRegistry( 'https://registry-1.docker.io/v2/', 'dockerhub' ) {
+					def buildName = "exeller/hello" + ":'$BRANCH_NAME'_'$BUILD_NUMBER'"
+					def newApp = docker.build(buildName)
 					newApp.push();
 						newApp.push('latest')
 				}
