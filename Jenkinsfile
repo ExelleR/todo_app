@@ -10,24 +10,34 @@ pipeline {
 	stages{
 		stage('Git') {
 			steps {
-				git 'https://github.com/ExelleR/todo_app.git'
+				step { 
+					git 'https://github.com/ExelleR/todo_app.git'
+				}
 			}
 		}
 		stage('Build') {
 			steps {
-				sh 'npm install'
+				step { 
+					sh 'npm install'
+				}
 			}
 		}
 		stage('Test') {
-			sh 'npm test'
+			steps {
+				step { 
+					sh 'npm test'
+				}
+			}
 		}
 		stage('Building image') {
 			steps {
-				docker.withRegistry( 'https://registry-1.docker.io/v2/', 'dockerhub' ) {
-					def buildName = "exeller/hello" + ":'$BRANCH_NAME'_'$BUILD_NUMBER'"
-					def newApp = docker.build(buildName)
-					newApp.push();
-						newApp.push('latest')
+				step { 
+					docker.withRegistry( 'https://registry-1.docker.io/v2/', 'dockerhub' ) {
+						def buildName = "exeller/hello" + ":'$BRANCH_NAME'_'$BUILD_NUMBER'"
+						def newApp = docker.build(buildName)
+						newApp.push();
+							newApp.push('latest')
+					}
 				}
 			}
 		}
