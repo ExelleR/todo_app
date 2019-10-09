@@ -37,5 +37,6 @@ node {
             credentialsId: env.CREDENTIALS_ID,
             verifyDeployments: true])
         }
-    }
+			
+  }
 }
