@@ -10,23 +10,23 @@ pipeline {
 	stages{
 		stage('Git') {
 			steps {
-				step { 
+				
 					git 'https://github.com/ExelleR/todo_app.git'
-				}
+				
 			}
 		}
 		stage('Build') {
 			steps {
-				step { 
+				
 					sh 'npm install'
-				}
+				
 			}
 		}
 		stage('Test') {
 			steps {
-				step { 
+				
 					sh 'npm test'
-				}
+				
 			}
 		}
 		stage('Building image') {
