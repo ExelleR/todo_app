@@ -3,9 +3,9 @@ pipeline {
 	agent any
 	environment {
         PROJECT_ID = 'studies-252508'
-        CLUSTER_NAME = 'jenkins-cluster'
+        CLUSTER_NAME = 'my-cluster'
         LOCATION = 'us-central1-a'
-        CREDENTIALS_ID = 'studies-252508'
+        CREDENTIALS_ID = 'Studies'
     }
 	stages{
 		stage('Git') {
