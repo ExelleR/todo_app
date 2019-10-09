@@ -5,7 +5,7 @@ pipeline {
         PROJECT_ID = 'studies-252508'
         CLUSTER_NAME = 'jenkins-cluster'
         LOCATION = 'us-central1-a'
-        CREDENTIALS_ID = 'multibranch'
+        CREDENTIALS_ID = 'studies-252508'
     }
 	stages{
 		stage('Git') {
