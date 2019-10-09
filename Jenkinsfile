@@ -27,8 +27,7 @@ node {
         }
 	}
 	stage('Deploy to GKE') {
-        steps{
-            step([
+        
             $class: 'KubernetesEngineBuilder',
             projectId: env.PROJECT_ID,
             clusterName: env.CLUSTER_NAME,
@@ -36,6 +35,6 @@ node {
             manifestPattern: 'manifest.yaml',
             credentialsId: env.CREDENTIALS_ID,
             verifyDeployments: true])
-        }
+    
     }
 }
