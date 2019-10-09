@@ -1,8 +1,10 @@
 pipeline {
+	script{
     def newApp
     def registry = 'https://registry-1.docker.io/v2/'
 	def imagename = "exeller/hello"
     def registryCredential = 'dockerhub'
+	}
 	agent any
 	environment {
         PROJECT_ID = 'studies-252508'
